@@ -2,6 +2,7 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import { config } from 'dotenv';
 import cors from 'cors';
+import { userRoute } from './services';
 
 config();
 
@@ -11,7 +12,7 @@ const corsOptions = {
   credentials: true,
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   preflightContinue: false,
-  optionsSuccessStatus: 204
+  optionsSuccessStatus: 204,
 };
 
 const app = express();
@@ -20,18 +21,20 @@ const app = express();
 app.use(cors(corsOptions));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
-    extended: true
+  extended: true,
 }));
 
+// Routes from Services
+app.use(userRoute);
+
 // Routing
-app.get('/', (req, res) => {
-  return res.status(200).json({
-    status: true,
-    message: "I am alive at this port"
-  })
-});
+app.get('/', (req, res) => res.status(200).json({
+  status: true,
+  message: 'I am alive at this port',
+}));
 
 app.listen(PORT, () => {
+  // eslint-disable-next-line no-console
   console.log(`Server running on port ${PORT}`);
 });
 
