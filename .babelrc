@@ -18,7 +18,9 @@
           "./"
         ],
         "alias": {
-          "@app": "./server/app"
+          "@app": "./server/app",
+          "@config": "./server/config",
+          "@services": "./server/services"
         }
       }
     ]
