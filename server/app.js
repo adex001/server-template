@@ -1,10 +1,10 @@
 import express from 'express';
 import bodyParser from 'body-parser';
-import { config } from 'dotenv';
 import cors from 'cors';
-import { userRoute } from './services';
 
-config();
+import '@config';
+import { userRoute } from './services';
+import { sequelize } from './db/models';
 
 const PORT = process.env.PORT || 2000;
 const corsOptions = {
@@ -37,5 +37,14 @@ app.listen(PORT, () => {
   // eslint-disable-next-line no-console
   console.log(`Server running on port ${PORT}`);
 });
+
+sequelize
+  .authenticate()
+  .then(() => {
+    console.log('Sequelize connection was successful');
+  })
+  .catch(err => {
+    console.error(err.message);
+  });
 
 export default app;
