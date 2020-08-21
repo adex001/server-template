@@ -11,8 +11,10 @@ const dateFormatter = ({ timestamp, options }) => {
   }
   try {
     const datefrom = new Date(timestamp);
-    const date = datefrom.getDate();
-    const month = datefrom.getMonth();
+    let date = datefrom.getDate();
+    date = date <= 9 ? `0${date}` : date;
+    let month = datefrom.getMonth();
+    month = month <= 9 ? `0${month}` : month;
     const year = datefrom.getFullYear();
 
     const mapper = {
