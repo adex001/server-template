@@ -4,8 +4,7 @@
   "description": "A simple server template",
   "main": "server/app.js",
   "scripts": {
-    "build": "npm run clean && babel server -d dist",
-    "clean": "rm -rf dist",
+    "build": "rimraf build && cross-env NODE_ENV=production babel server --copy-files --out-dir build",
     "migrate": "./node_modules/.bin/sequelize db:migrate && npm run seed",
     "seed": "./node_modules/.bin/sequelize db:seed:all",
     "start": "node ./dist/server/app.js",
@@ -38,7 +37,6 @@
     "babel-plugin-module-resolver": "^4.0.0",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
-    "cross-env": "^7.0.0",
     "dotenv": "^8.2.0",
     "eslint": "^7.7.0",
     "eslint-config-airbnb-base": "^14.2.0",
@@ -58,8 +56,10 @@
     "babel-loader": "^8.0.6",
     "chai": "^4.2.0",
     "chai-http": "^4.3.0",
+    "cross-env": "^7.0.2",
     "mocha": "^7.0.0",
     "nodemon": "^2.0.2",
+    "rimraf": "^3.0.2",
     "sequelize-cli": "^6.2.0"
   }
 }
