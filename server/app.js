@@ -45,7 +45,7 @@ sequelize
   .then(() => {
     console.log('Sequelize connection was successful');
   })
-  .catch(err => {
+  .catch((err) => {
     console.error(err.message);
   });
 

@@ -1,4 +1,10 @@
 /* eslint-disable prefer-destructuring */
+
+// options: {
+// delimiter: can be '/', '-', 'any other character',
+// showPM: true or false
+// }
+
 // Returns {fullDate, time, error}
 
 const dateFormatter = ({ timestamp, options }) => {
