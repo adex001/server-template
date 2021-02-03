@@ -18,9 +18,9 @@
           "./"
         ],
         "alias": {
-          "@app": "./server/app",
-          "@config": "./server/config",
-          "@services": "./server/services"
+          "@app": "./src/driver/webserver/app",
+          "@config": "./src/config",
+          "@services": "./src/services"
         }
       }
     ]

@@ -4,8 +4,8 @@ import cors from 'cors';
 import helmet from 'helmet';
 
 import '@config';
-import { userRoute } from './services';
-import { sequelize } from './db/models';
+import { userRoute } from '../../services';
+import '../../db/orm';
 
 const PORT = process.env.PORT || 2000;
 const corsOptions = {
@@ -39,14 +39,5 @@ app.listen(PORT, () => {
   // eslint-disable-next-line no-console
   console.log(`Server running on port ${PORT}`);
 });
-
-sequelize
-  .authenticate()
-  .then(() => {
-    console.log('Sequelize connection was successful');
-  })
-  .catch((err) => {
-    console.error(err.message);
-  });
 
 export default app;

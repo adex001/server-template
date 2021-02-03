@@ -4,7 +4,12 @@ import '@config';
 module.exports = {
   development: {
     url: process.env.DB_URL || '',
-    dialect: 'postgres',
+    logging: (e) => console.log(e),
+
+  },
+  staging: {
+    url: process.env.DB_URL || '',
+    logging: false,
   },
   test: {
     dialect: 'sqlite',
@@ -15,6 +20,6 @@ module.exports = {
   },
   production: {
     url: process.env.DB_URL_PRODUCTION || '',
-    dialect: 'mysql',
+    logging: false,
   },
 };
